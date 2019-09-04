@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 /**
  * Created by Maithra Jadhav
@@ -21,8 +22,13 @@ public class jenkinsDemo
 
     @Before
     public void setUp() 
-    {
-        driver = new ChromeDriver();
+    {	
+    	 System.setProperty("webdriver.chrome.driver",
+                 "ChromeDriverPath");
+         ChromeOptions options = new ChromeOptions();
+         options.addArguments("headless");
+         options.addArguments("window-size=1200x600");
+        driver = new ChromeDriver(options);
         driver.get(Base_Url);
     }
 
